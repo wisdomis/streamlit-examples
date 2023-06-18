@@ -3,38 +3,38 @@ import streamlit as st
 
 
 ## Title
-st.title('Streamlit Tutorial')
+st.title('공정운영 최적화 데이터 분석')
 
 
 ## Header/Subheader
-st.header('This is header')
-st.subheader('This is subheader')
+st.header('생산시스템구축실무 데이터보팀')
+##st.subheader('')
 
 
 ## Text
-st.text("Hello Streamlit! 이 글은 튜토리얼 입니다.")
+st.text("데이터 선정 이유")
 
 
 st.markdown("* * *")
 
 
 ## Markdown syntax
-st.markdown("# This is a Markdown title")
-st.markdown("## This is a Markdown header")
-st.markdown("### This is a Markdown subheader")
-st.markdown("- item 1\n"
+##st.markdown("# This is a Markdown title")
+##st.markdown("## This is a Markdown header")
+##st.markdown("### This is a Markdown subheader")
+##st.markdown("- item 1\n"
             "   - item 1.1\n"
             "   - item 1.2\n"
             "- item 2\n"
             "- item 3")
-st.markdown("1. item 1\n"
+##st.markdown("1. item 1\n"
             "   1. item 1.1\n"
             "   2. item 1.2\n"
             "2. item 2\n"
             "3. item 3")
 
 
-st.markdown("* * *")
+##st.markdown("* * *")
 
 
 ## Latex
@@ -48,14 +48,14 @@ st.markdown("* * *")
 
 
 ## Error/Colorful Text
-st.success("Successful")
-st.info("Information!")
-st.warning("This is a warning")
-st.error("This is an error!")
-st.exception("NameError('Error name is not defined')")
+##st.success("Successful")
+##st.info("Information!")
+##st.warning("This is a warning")
+##st.error("This is an error!")
+##st.exception("NameError('Error name is not defined')")
 
 
-st.markdown("* * *")
+##st.markdown("* * *")
 
 
 ## Load data
@@ -63,8 +63,13 @@ import pandas as pd
 from sklearn.datasets import load_iris
 iris = load_iris()
 iris_df = pd.DataFrame(iris.data, columns=iris.feature_names)
-iris_df['target'] = iris['target']
-iris_df['target'] = iris_df['target'].apply(lambda x: 'setosa' if x == 0 else ('versicolor' if x == 1 else 'virginica'))
+iris_df['Index'] = iris['Index']
+iris_df['LoT'] = iris_df['target'] ##.apply(lambda x: 'setosa' if x == 0 else ('versicolor' if x == 1 else 'virginica'))
+iris_df['Time'] = iris['Time']
+iris_df['pH'] = iris['pH']
+iris_df['Temp'] = iris['Temp']
+
+##Index,LoT,Time,pH,Temp
 
 ## Return table/dataframe
 # table
@@ -100,7 +105,7 @@ st.markdown("* * *")
 
 
 # Select Box (ex)
-occupation = st.selectbox("직군을 선택하세요.",
+occupation = st.selectbox("데이터를 선택하세요.",
                           ["Backend Developer",
                            "Frontend Developer",
                            "ML Engineer",
@@ -109,45 +114,45 @@ occupation = st.selectbox("직군을 선택하세요.",
                            "Data Scientist",
                            "Data Analyst",
                            "Security Engineer"])
-st.write("당신의 직군은 ", occupation, " 입니다.")
+st.write("해당 데이터 분석 결과", occupation, " 입니다.")
 
 
 st.markdown("* * *")
 
 
 ## MultiSelect
-location = st.multiselect("선호하는 유투브 채널을 선택하세요.",
-                          ("운동", "IT기기", "브이로그",
-                           "먹방", "반려동물", "맛집 리뷰"))
-st.write(len(location), "가지를 선택했습니다.")
+##location = st.multiselect("선호하는 유투브 채널을 선택하세요.",
+##                        ("운동", "IT기기", "브이로그",
+##                          "먹방", "반려동물", "맛집 리뷰"))
+##st.write(len(location), "가지를 선택했습니다.")
 
 
 st.markdown("* * *")
 
 
 ## Buttons
-if st.button("About"):
-    st.text("Streamlit을 이용한 튜토리얼입니다.")
+if st.button("공정운영 최적화 데이터 분석 더 알아보기"):
+    st.text("공정운영 최적화 데이터 분석과 관련한 정보를 제공합니다.")
 
 
 st.markdown("* * *")
 
 
 # Text Input
-first_name = st.text_input("이름을 입력하세요.", "Type Here ...")
-if st.button("Submit", key='first_name'):
-    result = first_name.title()
-    st.success(result)
+##first_name = st.text_input("이름을 입력하세요.", "Type Here ...")
+##if st.button("Submit", key='first_name'):
+##    result = first_name.title()
+##    st.success(result)
 
 
 # Text Area
-message = st.text_area("메세지를 입력하세요.", "Type Here ...")
-if st.button("Submit", key='message'):
-    result = message.title()
-    st.success(result)
+##message = st.text_area("메세지를 입력하세요.", "Type Here ...")
+##if st.button("Submit", key='message'):
+##    result = message.title()
+##    st.success(result)
 
 
-st.markdown("* * *")
+##st.markdown("* * *")
 
 
 ## Date Input
@@ -174,7 +179,7 @@ with st.echo():
 
 ## Display JSON
 st.subheader("Display JSON")
-st.json({'name' : '민수', 'gender':'male', 'Age': 29})
+st.json({'Time' : '24', 'gender':'male', 'Age': 29})
 
 
 st.markdown("* * *")
@@ -190,7 +195,13 @@ st.sidebar.selectbox("메뉴를 선택하세요.",
 
 ## Plotting
 st.subheader("Matplotlib으로 차트 그리기")
-iris_df[iris_df['target']=='virginica']['petal length (cm)'].hist()
-st.pyplot()
+iris_df[
+##iris_df['Index'] = iris['Index']
+##iris_df['LoT'] = iris_df['target']
+##iris_df['Time'] = iris['Time']
+##iris_df['pH'] = iris['pH']
+##iris_df['Temp'] = iris['Temp']
 
+iris_df['target']=='virginica']['petal length (cm)'].hist()
+st.pyplot()
 
